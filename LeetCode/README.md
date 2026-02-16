@@ -40,3 +40,5 @@
 - **maximum subarray** ([solution](maximum-subarray.ts)) - ts - Medium - 2026-02-16T10:50:29.343Z
 
 - **linked list cycle** ([solution](linked-list-cycle.cpp)) - cpp - Easy - 2026-02-16T14:38:03.578Z
+
+- **find pivot index** ([solution](find-pivot-index.cpp)) - c++ - Easy - 2026-02-16T16:30:37.900Z
