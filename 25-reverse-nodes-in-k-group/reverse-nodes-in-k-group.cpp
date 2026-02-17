@@ -1,6 +1,6 @@
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverse(ListNode* head) {
         ListNode* prev = NULL;
         ListNode* curr = head;
         while (curr != NULL) {
@@ -13,42 +13,34 @@ public:
     }
 
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if (head == NULL || k == 1) return head;
-
-        ListNode dummy(0);
-        dummy.next = head;
-
-        ListNode* fina = &dummy;
-        ListNode* meow = head;
-
+        if (head == NULL || k == 1)
+            return head;
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* prev = dummy;
+        ListNode* nextNode = NULL;
+        // ListNode* temp = head;
         while (true) {
-            ListNode* check = meow;
-            int i = 0;
-            while (i < k && check != NULL) {
-                check = check->next;
-                i++;
-            }
-            if (i < k) break;
-
-            ListNode* temp = meow;
-            ListNode* prevTail = fina;
-
-            for (int j = 1; j < k; j++) {
-                temp = temp->next;
+            // ListNode* kth = prev;
+            // for(int i=0; i<k && kth->next != NULL; i++){
+            //     kth=kth->next;
+            // }
+            // if(kth == NULL) break;
+            ListNode* kth = prev;
+            for (int i = 0; i < k; i++) {
+                kth = kth->next;
+                if (kth == NULL)
+                    return dummy->next;
             }
 
-            ListNode* nextGroup = temp->next;
-            temp->next = NULL;
-
-            ListNode* dar = reverseList(meow);
-
-            prevTail->next = dar;
-            meow->next = nextGroup;
-
-            fina = meow;
-            meow = nextGroup;
+            ListNode* s = prev->next;
+            ListNode* n = kth->next;
+            kth->next = NULL;
+            ListNode* na = reverse(s);
+            prev->next = na;
+            s->next = n;
+            prev = s;
         }
-
-        return dummy.next;
+        return dummy->next;
     }
 };
